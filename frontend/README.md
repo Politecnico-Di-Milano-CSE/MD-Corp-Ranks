@@ -17,11 +17,9 @@ Welcome to `MD-CORP-RANKS` - a starter boilerplate for building scalable web app
 
 Follow these steps to set up and run your project.
 
-# Step 1: Create a New Vite Project
+# Step 1: Git clone the repository
 
-To create a new project, run:
-
-npx create-vite@latest MD-COROP_RANKS -- --template react-ts
+git clone https://github.com/Politecnico-Di-Milano-CSE/MD-Corp-Ranks.git
 
 # Step 2: Navigate into Your Project
 
