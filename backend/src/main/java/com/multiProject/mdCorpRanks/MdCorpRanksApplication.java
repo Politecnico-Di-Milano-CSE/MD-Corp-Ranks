@@ -1,4 +1,4 @@
-package com.corpRanks.mdcorpRanks;
+package com.multiProject.mdCorpRanks;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -9,5 +9,4 @@ public class MdCorpRanksApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(MdCorpRanksApplication.class, args);
 	}
-
 }
