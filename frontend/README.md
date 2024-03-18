@@ -5,7 +5,7 @@ To create a complete README for a project file based on the provided boilerplate
 
 Welcome to `MD-CORP-RANKS` - a starter boilerplate for building scalable web applications using Vite, React, and TypeScript. This project setup includes routing, state management, unit testing, linting, and formatting setups to kickstart your development process.
 
-## 📚 Important Links
+# Important Links
 
 - React Documentation: [https://react.dev/](https://react.dev/)
 - React Learning Resources: [https://react.dev/learn](https://react.dev/learn)
@@ -13,61 +13,59 @@ Welcome to `MD-CORP-RANKS` - a starter boilerplate for building scalable web app
 - TypeScript Handbook: [https://www.typescriptlang.org/docs/handbook/intro.html](https://www.typescriptlang.org/docs/handbook/intro.html)
 - TypeScript Playground: [https://www.typescriptlang.org/play](https://www.typescriptlang.org/play)
 
-## 🚀 Getting Started
+# Getting Started
 
 Follow these steps to set up and run your project.
 
-### Step 1: Create a New Vite Project
+# Step 1: Create a New Vite Project
 
 To create a new project, run:
 
 npx create-vite@latest MD-COROP_RANKS -- --template react-ts
 
-### Step 2: Navigate into Your Project
+# Step 2: Navigate into Your Project
 
 cd frontend
 
 
-### Step 3: Install Dependencies
+# Step 3: Install Dependencies
 
 npm install
 
 
-### Step 4: Customize Your Boilerplate
+# Step 4: Customize Your Boilerplate
 
-- **Add a Router**:
+- Add a Router:
   npm install react-router-dom@6 @types/react-router-dom
 
 
-- **State Management** (if applicable, setup your chosen library here, for example Redux or Zustand)
+- State Management (if applicable, setup your chosen library here, for example Redux or Zustand)
 
-- **Testing**:
+- Testing:
   npm install --save-dev jest @types/jest @testing-library/react @testing-library/jest-dom
 
 
-- **Linting and Formatting**:
+- Linting and Formatting:
   npm install --save-dev eslint prettier eslint-config-prettier eslint-plugin-react @typescript-eslint/eslint-plugin @typescript-eslint/parser
 
 
-### Step 5: Run Your Development Server
+# Step 5: Run Your Development Server
 
 npm run dev
 
 
-Access your application at [http://localhost:3000](http://localhost:3000).
+Access your application at [http://localhost:3000].
 
-### Step 6: Building for Production
+# Step 6: Building for Production
 
 When you're ready to deploy:
 
 npm run build
 
 
-## 📦 Conclusion
+# Conclusion
 
 You've successfully set up a Vite, TypeScript, and React project. This boilerplate is now ready for development and production builds. Explore the provided links for additional resources and documentation to further enhance your application.
 
 Happy coding!
 ```
-
-This README file is designed to be placed in the root directory of your project. It provides a comprehensive guide for anyone who wants to clone, run, and work on your project, including detailed setup instructions and links to important resources for learning and further customization.
