@@ -38,12 +38,10 @@ npm install
 - Add a Router:
   npm install react-router-dom@6 @types/react-router-dom
 
-
 - State Management (if applicable, setup your chosen library here, for example Redux or Zustand)
 
 - Testing:
   npm install --save-dev jest @types/jest @testing-library/react @testing-library/jest-dom
-
 
 - Linting and Formatting:
   npm install --save-dev eslint prettier eslint-config-prettier eslint-plugin-react @typescript-eslint/eslint-plugin @typescript-eslint/parser
