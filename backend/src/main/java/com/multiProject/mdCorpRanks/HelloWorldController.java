@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 @RestController
 public class HelloWorldController {
 
-    @PostMapping(path = "/alice")
+    @PostMapping(path = "/")
     public ResponseEntity<Default> showStatus(@RequestBody Default status){
         return new ResponseEntity<>(status, HttpStatus.OK);
     }
