@@ -1,14 +1,14 @@
-import { useState, ChangeEvent } from 'react';
+import React, { useState, ChangeEvent } from 'react';
 import './App.css';
 import SelectPreference from './selectPreference';
 import ProceedButton from './proceedButton';
 
-const Preferences = () => {
-    const [identityPreference, setIdentityPreference] = useState('');
-    const [reviewPreference, setReviewPreference] = useState('');
+const Preferences: React.FC = () => {
+    const [identityPreference, setIdentityPreference] = useState<string>('');
+    const [reviewPreference, setReviewPreference] = useState<string>('');
 
     // Check if both preferences are selected to enable the button
-    const canProceed = identityPreference !== 'Selection' && reviewPreference !== 'Selection';
+    const canProceed = identityPreference !== '' && reviewPreference !== '';
 
     // Event handlers
     const handleIdentitySelect = (event: ChangeEvent<HTMLSelectElement>) => {
@@ -30,7 +30,7 @@ const Preferences = () => {
                     Welcome to Multidisciplinary Project.....!
                 </h1>
                 <p>
-                The customer is very important, the customer will be followed by the customer. Let it be a very soft salad. Don't tell anyone who is going to decorate it. But a sad libero quis felis ultricies, the mouth of the quiver of the lake molestie. Complete as a sad pain. Some drink should be eu mauris and laoreet. Until the end of my life, it's a great lacinia, a wise young man. Curabitur is a price or not a laoreet, whether it is a regular course or a truck. Tomorrow the course becomes an element. The ship is not the biggest ship, but it is a lot of pregnant women.
+                    The customer is very important, the customer will be followed by the customer. Let it be a very soft salad. Don't tell anyone who is going to decorate it. But a sad libero quis felis ultricies, the mouth of the quiver of the lake molestie. Complete as a sad pain. Some drink should be eu mauris and laoreet. Until the end of my life, it's a great lacinia, a wise young man. Curabitur is a price or not a laoreet, whether it is a regular course or a truck. Tomorrow the course becomes an element. The ship is not the biggest ship, but it is a lot of pregnant women.
                 </p>
                 <div>
                     <h3>
@@ -38,12 +38,20 @@ const Preferences = () => {
                     </h3>
                     <SelectPreference
                         label="Identity preference"
-                        options={['Selection', 'Anonymous', 'Publicly visible']}
+                        options={[
+                            { value: '', description: 'Selection' },
+                            { value: 'anonymous', description: 'Anonymous' },
+                            { value: 'public', description: 'Publicly visible' }
+                        ]}
                         onSelect={handleIdentitySelect}
                     />
                     <SelectPreference
                         label="Review preference"
-                        options={['Selection', 'Verified', 'Not verified']}
+                        options={[
+                            { value: '', description: 'Selection' },
+                            { value: 'verified', description: 'Verified' },
+                            { value: 'notVerified', description: 'Not verified' }
+                        ]}
                         onSelect={handleReviewSelect}
                     />
                     <ProceedButton onClick={handleProceedClick} disabled={!canProceed} />
