@@ -33,19 +33,19 @@ const App = () => {
     checkUserStatus();
   }, []);
 
-  const savePreferences = async (identityPreference: string, reviewPreference: string) => {
-    if (!userId) return; 
+  const savePreferences = async (preferenceType: string, preferenceValue: string) => {
+    if (!userId) return;
 
     try {
       const response = await fetch(`${backendUrlAndPort}/api/preferences`, {
         method: 'POST',
-        credentials: 'include', 
+        credentials: 'include',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          preferenceName: identityPreference === 'anonymous' ? 'anonymous' : 'certified',
-          chosen: reviewPreference === 'verified',
+          preferenceType, // This replaces preferenceName
+          preferenceValue // This replaces chosen
         }),
       });
 
@@ -60,11 +60,11 @@ const App = () => {
   };
 
   if (loading) {
-    return <div>Loading...</div>; 
+    return <div>Loading...</div>;
   }
 
   if (reviewAlreadyGiven) {
-    return <div>You have already given a review.</div>; 
+    return <div>You have already given a review.</div>;
   }
 
   return (

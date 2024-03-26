@@ -16,11 +16,15 @@ const Preferences: React.FC<PreferencesProps> = ({ savePreferences }) => {
 
     // Event handlers
     const handleIdentitySelect = (event: ChangeEvent<HTMLSelectElement>) => {
-        setIdentityPreference(event.target.value);
+        const newIdentityPreference = event.target.value;
+        setIdentityPreference(newIdentityPreference);
+        savePreferences('identityPreference', newIdentityPreference); // Call savePreferences here
     };
 
     const handleReviewSelect = (event: ChangeEvent<HTMLSelectElement>) => {
-        setReviewPreference(event.target.value);
+        const newReviewPreference = event.target.value;
+        setReviewPreference(newReviewPreference);
+        savePreferences('reviewPreference', newReviewPreference); // Call savePreferences here
     };
 
     const handleProceedClick = () => {
