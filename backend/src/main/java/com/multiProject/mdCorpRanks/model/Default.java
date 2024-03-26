@@ -1,4 +1,4 @@
-package com.multiProject.mdCorpRanks;
+package com.multiProject.mdCorpRanks.model;
 
 public class Default {
     private String message;

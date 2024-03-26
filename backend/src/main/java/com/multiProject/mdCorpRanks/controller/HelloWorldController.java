@@ -1,9 +1,12 @@
-package com.multiProject.mdCorpRanks;
+package com.multiProject.mdCorpRanks.controller;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.multiProject.mdCorpRanks.model.Default;
+
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
