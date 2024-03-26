@@ -44,8 +44,8 @@ const App = () => {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          preferenceType, // This replaces preferenceName
-          preferenceValue // This replaces chosen
+          preferenceType, 
+          preferenceValue 
         }),
       });
 
