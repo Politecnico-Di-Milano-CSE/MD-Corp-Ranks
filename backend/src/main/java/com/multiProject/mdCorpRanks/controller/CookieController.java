@@ -1,10 +1,12 @@
 package com.multiProject.mdCorpRanks.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.multiProject.mdCorpRanks.model.UserResponseDTO;
+import com.multiProject.mdCorpRanks.service.UserService;
 
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -59,32 +61,40 @@ public ResponseEntity<String> readCookie(HttpServletRequest request)
     return ResponseEntity.ok("No UUID cookie found");
 }
 
+@Autowired
+private UserService userService;
+
 @GetMapping("/api/register")
 public ResponseEntity<?> registerOrIdentifyUser(HttpServletRequest request, HttpServletResponse response) {
-    String userId;
-    boolean reviewAlreadyGiven = false; // For future referance
+    String userId = null;
+    boolean reviewAlreadyGiven = false;
     
-    // Check for an existing "userId" cookie
+    // Check if a "userId" cookie already exists
     Cookie[] cookies = request.getCookies();
     if (cookies != null) {
         for (Cookie cookie : cookies) {
             if ("userId".equals(cookie.getName())) {
                 userId = cookie.getValue();
-                // reviewAlreadyGiven: Optional for future reference
-                return ResponseEntity.ok(new UserResponseDTO(userId, reviewAlreadyGiven));
+                break; // Stop looking for the userId if found
             }
         }
     }
     
-    // If no userId cookie, generate a new one
-    userId = UUID.randomUUID().toString();
-    Cookie newUserCookie = new Cookie("userId", userId);
-    newUserCookie.setPath("/");
-    newUserCookie.setHttpOnly(true);
-    newUserCookie.setMaxAge(10 * 365 * 24 * 60 * 60);
-    response.addCookie(newUserCookie);
-    
-    // Respond with the new user's info
-    return ResponseEntity.ok(new UserResponseDTO(userId, reviewAlreadyGiven));
+    // If no "userId" cookie was found, generate a new one
+    if (userId == null) {
+        userId = UUID.randomUUID().toString();
+        Cookie newUserCookie = new Cookie("userId", userId);
+        newUserCookie.setPath("/");
+        newUserCookie.setHttpOnly(true);
+        newUserCookie.setMaxAge(10 * 365 * 24 * 60 * 60); // 10 years
+        response.addCookie(newUserCookie);
+    }
+
+    // Use UserService to register or identify the user
+    UserResponseDTO userResponse = userService.registerOrIdentifyUser(userId);
+    reviewAlreadyGiven = userResponse.isReviewAlreadyGiven();
+
+    // Send back the user response
+    return ResponseEntity.ok(userResponse);
 }
 }
