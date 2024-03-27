@@ -8,8 +8,8 @@ interface ProceedButtonProps {
 const ProceedButton: React.FC<ProceedButtonProps> = ({ onClick, disabled }) => {
   return (
     <div className="btn-container">
-      <button onClick={onClick} disabled={disabled}>
-        Proceed!
+      <button className="proceed-button" onClick={onClick} disabled={disabled}>
+        LEAVE REVIEW
       </button>
     </div>
   );

@@ -1,71 +1,72 @@
-import React, { useState, ChangeEvent } from 'react';
-import './App.css';
+import React, { useState } from 'react';
 import SelectPreference from './selectPreference';
 import ProceedButton from './proceedButton';
+import './App.css';
 
+//  Function to handle the form submission and display results on
 interface PreferencesProps {
-    savePreferences: (identityPreference: string, reviewPreference: string) => void;
+  savePreferences: (identityPreference: string, reviewPreference: string) => void;
 }
 
+//   Main component for handling user preferences input
 const Preferences: React.FC<PreferencesProps> = ({ savePreferences }) => {
-    const [identityPreference, setIdentityPreference] = useState<string>('Selection');
-    const [reviewPreference, setReviewPreference] = useState<string>('Selection');
+  const [identityPreference, setIdentityPreference] = useState<string>('');
+  const [reviewPreference, setReviewPreference] = useState<string>('');
 
-    // Check if both preferences are selected to enable the button
-    const canProceed = identityPreference !== '' && reviewPreference !== '';
+  // Check if both preferences are selected to enable the button
+  const canProceed = identityPreference !== '' && reviewPreference !== '';
 
-    // Event handlers
-    const handleIdentitySelect = (event: ChangeEvent<HTMLSelectElement>) => {
-        const newIdentityPreference = event.target.value;
-        setIdentityPreference(newIdentityPreference);
-        savePreferences('identityPreference', newIdentityPreference); // Call savePreferences here
-    };
+  // Event handlers that update state with user's current selection
+  const handleIdentitySelect = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    const newIdentityPreference = event.target.value;
+    setIdentityPreference(newIdentityPreference);
+    savePreferences(newIdentityPreference, reviewPreference);
+  };
 
-    const handleReviewSelect = (event: ChangeEvent<HTMLSelectElement>) => {
-        const newReviewPreference = event.target.value;
-        setReviewPreference(newReviewPreference);
-        savePreferences('reviewPreference', newReviewPreference); // Call savePreferences here
-    };
+  // Event handlers that update state with user's current selection
+  const handleReviewSelect = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    const newReviewPreference = event.target.value;
+    setReviewPreference(newReviewPreference);
+    savePreferences(identityPreference, newReviewPreference);
+  };
 
-    const handleProceedClick = () => {
-        // Now we use the savePreferences function passed via props
-        savePreferences(identityPreference, reviewPreference);
-    };
+  const handleProceedClick = () => {
+    savePreferences(identityPreference, reviewPreference);
+  };
 
-    return (
-        <div className="container">
-            <div className="stuff">
-                <h1 className="welcome-text">
-                    Welcome to Multidisciplinary Project.....!
-                </h1>
-                The customer is very important, the customer will be followed by the customer. Let it be a very soft salad. Don't tell anyone who is going to decorate it. But a sad libero quis felis ultricies, the mouth of the quiver of the lake molestie. Complete as a sad pain. Some drink should be eu mauris and laoreet. Until the end of my life, it's a great lacinia, a wise young man. Curabitur is a price or not a laoreet, whether it is a regular course or a truck. Tomorrow the course becomes an element. The ship is not the biggest ship, but it is a lot of pregnant women.
-                <div>
-                    <h3>
-                        Please select your preferences before you can proceed
-                    </h3>
-                    <SelectPreference
-                        label="Identity preference"
-                        options={[
-                            { value: '', description: 'Selection' },
-                            { value: 'Anonymous', description: 'Anonymous' },
-                            { value: 'Publicly visible', description: 'Publicly visible' }
-                        ]}
-                        onSelect={handleIdentitySelect}
-                    />
-                    <SelectPreference
-                        label="Review preference"
-                        options={[
-                            { value: '', description: 'Selection' },
-                            { value: 'Verified', description: 'Verified' },
-                            { value: 'Not verified', description: 'Not verified' }
-                        ]}
-                        onSelect={handleReviewSelect}
-                    />
-                    <ProceedButton onClick={handleProceedClick} disabled={!canProceed} />
-                </div>
-            </div>
-        </div>
-    );
+  return (
+    <div className="preferences-container">
+      <div className="header">
+        <h1>JobSecrets.com</h1>
+      </div>
+      <div className="main-content">
+        <h2>Welcome!</h2>
+        <p>This website aims at....</p>
+        {/* ...other content... */}
+        <a href="/Certificazione Polimi.pdf" target="_blank" className="certification-link">
+          Want to know more about our certification?
+        </a>
+
+        <SelectPreference
+          label="Identity preference"
+          options={[
+            { value: 'Anonymous', description: 'Yes, I wanna stay ANONYMOUS' },
+            { value: 'Public', description: 'Yes, I want my reviews to be CERTIFIED' }
+          ]}
+          onSelect={handleIdentitySelect}
+        />
+        <SelectPreference
+          label="Review preference"
+          options={[
+            { value: 'Verified', description: 'Verified' },
+            { value: 'NotVerified', description: 'Not verified' }
+          ]}
+          onSelect={handleReviewSelect}
+        />
+        <ProceedButton onClick={handleProceedClick} disabled={!canProceed} />
+      </div>
+    </div>
+  );
 };
 
 export default Preferences;

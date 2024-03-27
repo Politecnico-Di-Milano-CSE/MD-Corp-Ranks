@@ -13,10 +13,11 @@ interface SelectPreferenceProps {
 
 const SelectPreference: React.FC<SelectPreferenceProps> = ({ label, options, onSelect }) => {
   return (
-    <div>
-      <label>
+    <div className="select-container">
+      <label className="select-label">
         {label}:
-        <select onChange={onSelect}>
+        <select className="select-box" onChange={onSelect}>
+          <option value="">Select...</option> {/* Added for default selection */}
           {options.map((option) => (
             <option key={option.value} value={option.value}>
               {option.description}
