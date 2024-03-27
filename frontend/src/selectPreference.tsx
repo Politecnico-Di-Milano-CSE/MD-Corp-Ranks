@@ -17,8 +17,8 @@ const SelectPreference: React.FC<SelectPreferenceProps> = ({ label, options, onS
       <label>
         {label}:
         <select onChange={onSelect}>
-          {options.map((option, index) => (
-            <option key={index} value={option.value}>
+          {options.map((option) => (
+            <option key={option.value} value={option.value}>
               {option.description}
             </option>
           ))}
