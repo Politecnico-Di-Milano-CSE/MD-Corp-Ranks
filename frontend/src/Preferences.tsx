@@ -12,7 +12,7 @@ const Preferences: React.FC<PreferencesProps> = ({ savePreferences }) => {
     const [reviewPreference, setReviewPreference] = useState<string>('Selection');
 
     // Check if both preferences are selected to enable the button
-    const canProceed = identityPreference !== 'Selection' && reviewPreference !== 'Selection';
+    const canProceed = identityPreference !== '' && reviewPreference !== '';
 
     // Event handlers
     const handleIdentitySelect = (event: ChangeEvent<HTMLSelectElement>) => {
