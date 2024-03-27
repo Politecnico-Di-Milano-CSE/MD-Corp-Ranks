@@ -46,7 +46,7 @@ const Preferences: React.FC<PreferencesProps> = ({ savePreferences }) => {
                     <SelectPreference
                         label="Identity preference"
                         options={[
-                            { value: 'Selection', description: 'Selection' },
+                            { value: '', description: 'Selection' },
                             { value: 'Anonymous', description: 'Anonymous' },
                             { value: 'Publicly visible', description: 'Publicly visible' }
                         ]}
@@ -55,7 +55,7 @@ const Preferences: React.FC<PreferencesProps> = ({ savePreferences }) => {
                     <SelectPreference
                         label="Review preference"
                         options={[
-                            { value: 'Selection', description: 'Selection' },
+                            { value: '', description: 'Selection' },
                             { value: 'Verified', description: 'Verified' },
                             { value: 'Not verified', description: 'Not verified' }
                         ]}
