@@ -1,22 +1,14 @@
 package com.multiProject.mdCorpRanks.model;
 
+import lombok.Getter;
+import lombok.Setter;
+import lombok.NoArgsConstructor;
+import lombok.AllArgsConstructor;
+
+@NoArgsConstructor
+@AllArgsConstructor
+@Getter
+@Setter
 public class Default {
     private String message;
-
-    // Constructors
-    public Default() {}
-
-    public Default(String message) {
-        this.message = message;
-    }
-
-    // Getter and Setter
-    public String getMessage() {
-        return message;
-    }
-
-    public void setMessage(String message) {
-        this.message = message;
-    }
 }
-
